@@ -1,0 +1,31 @@
+<div *ngIf="isLoggedIn">
+  <!-- sidebar.component.html -->
+
+  <mat-sidenav-container style="height: 100vh; display: flex">
+    <mat-sidenav mode="side" opened style="width: 200px">
+      <mat-nav-list>
+        <ng-container *ngIf="user?.role === 'iop'">
+          <a mat-list-item (click)="navigateTo('/')">Dashboard</a>
+          <a mat-list-item (click)="navigateTo('/contracts')">Contract</a>
+          <a mat-list-item (click)="navigateTo('/histories')">History</a>
+        </ng-container>
+        <ng-container *ngIf="user?.role === 'emsp'">
+          <a mat-list-item (click)="navigateTo('/')">Dashboard</a>
+          <a mat-list-item (click)="navigateTo('/list-users')">List CPO</a>
+          <a mat-list-item (click)="navigateTo('/listAccords')">Accords</a>
+        </ng-container>
+        <ng-container *ngIf="user?.role === 'cpo'">
+          <a mat-list-item (click)="navigateTo('/')">Dashboard</a>
+          <a mat-list-item (click)="navigateTo('/list-users')">List EMSP</a>
+          <a mat-list-item (click)="navigateTo('/listAccords')">Accords</a>
+        </ng-container>
+        <a mat-list-item (click)="logout('/login')">Logout</a>
+        <!-- Add more sidebar items as needed -->
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content style="flex-grow: 1; overflow-y: auto">
+      <router-outlet> </router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

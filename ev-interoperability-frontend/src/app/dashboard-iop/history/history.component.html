@@ -1,0 +1,11 @@
+<!-- history.component.html -->
+<div *ngFor="let entry of historyEntries" class="card">
+  <div class="card-header">{{ entry.operation }}</div>
+  <div class="card-body">
+    <p class="card-text">{{ entry.details }}</p>
+    <div class="user-info">
+      <span class="user-id">User ID: {{ entry.userId }}</span>
+      <span class="timestamp">Timestamp: {{ entry.timestamp | date : "medium" }}</span>
+    </div>
+  </div>
+</div>
