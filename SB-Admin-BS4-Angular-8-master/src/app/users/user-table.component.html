@@ -1,0 +1,39 @@
+<div class="card-container">
+    <div class="mat-elevation-z8">
+        <ng-container *ngIf="role === 'emsp'">
+            <div class="card-title">Liste de EMSP</div>
+        </ng-container>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.role }}</td>
+                    <td>
+                        <div class="block" style="padding: 4px; margin: 2px">
+                            <ng-container *ngIf="role === 'iop'">
+                                <button color="primary" style="background-color: #5dad" (click)="onEdit(user)">
+                                    Edit
+                                </button>
+                                <button style="background-color: red" (click)="onDelete(user)">Delete</button>
+                            </ng-container>
+                            <ng-container *ngIf="role === 'emsp' || role === 'cpo'">
+                                <button color="primary" style="background-color: #5dad" (click)="sendAccord(user)">
+                                    Create Accord
+                                </button>
+                            </ng-container>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

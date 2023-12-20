@@ -22,34 +22,28 @@ import { ContractsModule } from '../contracts-add/contracts.module';
 import { RouterModule } from '@angular/router';
 import { DashboardIopComponent } from './dashboard-iop.component';
 import { ActivateAccountComponent } from '../activate-account/activate-account.component';
-import { MainComponent } from './main/main.component';
 import { UserTableComponent } from './users/user-table.component';
 import { CommonModule } from '@angular/common';
 import { UserTableModule } from './users/user-table.module';
-import { MatIconModule } from '@angular/material/icon';
 import { HistoryComponent } from './history/history.component';
+import { RechargeMobilityComponent } from './recharge-mobility/recharge-mobility.component';
+import { RechargeOperationComponent } from './recharge-operation/recharge-operation.component';
+import { DataTableDirective, DataTablesModule } from 'angular-datatables';
+import { RechargeOperationModule } from './recharge-operation/recharge-operation.module';
 
 @NgModule({
   declarations: [
-    HistoryComponent
+    RechargeMobilityComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     UserTableModule,
     CommonModule,
-    ReactiveFormsModule,
-    MatToolbarModule,
+    DataTablesModule,
 
-    MatSidenavModule,
-    MatListModule,
-    MatOptionModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatCardModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatTableModule,
+    RechargeOperationModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [DashboardIopComponent],

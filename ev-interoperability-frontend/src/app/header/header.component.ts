@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +10,15 @@ export class HeaderComponent implements OnInit {
   @Input()
   isLoggedIn?: boolean;
 
-  user!: string;
+  user!: User;
 
   ngOnInit(): void {
     const currentUser = JSON.parse(localStorage.getItem('user')!);
 
-    this.user = currentUser.username;
+    this.user = currentUser;
+  }
+
+  getUserPictureUrl(fileName: string): string {
+    return `http://localhost:3000/uploads/${fileName}`;
   }
 }

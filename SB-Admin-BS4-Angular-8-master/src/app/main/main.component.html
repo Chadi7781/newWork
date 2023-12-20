@@ -1,0 +1,10 @@
+<!-- main.component.html -->
+
+
+<app-user-table
+    [users]="users"
+    (editUser)="editUser($event)"
+    (deleteUser)="deleteUser($event)"
+    [role]="role"
+    [accords]="accords"
+></app-user-table>

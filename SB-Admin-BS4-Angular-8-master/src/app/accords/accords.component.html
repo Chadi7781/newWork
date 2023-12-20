@@ -1,0 +1,74 @@
+<div class="card-container">
+    <div class="mat-elevation-z8">
+        <div>
+            <div class="card-title">Liste des accords</div>
+        </div>
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let accord of accords">
+                    <td>{{ accord.user.username }}</td>
+                    <td>{{ accord.user.email }}</td>
+                    <td>
+                        <div class="block" style="padding: 4px; margin: 2px">
+                            <div *ngIf="accord.etat_accord === 'pending'">
+                                <div style="display: flex; justify-content: center; align-items: center">
+                                    <button
+                                        color="primary"
+                                        style="background-color: #4adc"
+                                        (click)="confirmAccord(accord)"
+                                    >
+                                        Approve accord
+                                    </button>
+                                    <button
+                                        color="primary"
+                                        style="background-color: grey; margin-left: 10px"
+                                        (click)="refuseAccord(accord)"
+                                    >
+                                        Refuse accord
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="accord.etat_accord === 'confirmed'">
+                                <div style="display: flex; justify-content: center; align-items: center">
+                                    <span
+                                        style="
+                                            background-color: #4adc;
+                                            padding: 8px;
+                                            border-radius: 4px;
+                                            color: white;
+                                            font-weight: 800px;
+                                        "
+                                    >
+                                        Accord Confirmed
+                                    </span>
+                                </div>
+                            </div>
+                            <div *ngIf="accord.etat_accord === 'refused'">
+                                <div style="display: flex; justify-content: center; align-items: center">
+                                    <span
+                                        style="
+                                            background-color: #b12;
+                                            padding: 8px;
+                                            border-radius: 4px;
+                                            color: white;
+                                            font-weight: 800px;
+                                        "
+                                    >
+                                        Accord Refused
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

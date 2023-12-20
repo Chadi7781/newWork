@@ -1,70 +1,76 @@
 <div class="card-container">
-  <mat-card class="mat-elevation-z8">
-    <ng-container *ngIf="role === 'emsp'">
-      <mat-card-title>Liste de EMSP </mat-card-title>
-    </ng-container>
-    <table mat-table [dataSource]="users" class="custom-table">
-      <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef>Username</th>
-        <td mat-cell *matCellDef="let user">{{ user.username }}</td>
-      </ng-container>
+  <div class="card" *ngFor="let user of users">
+    <div class="card-body">
+      <div class="d-flex align-items-center mb-3">
+        <!-- Placeholder for Logo Image -->
 
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef>Email</th>
-        <td mat-cell *matCellDef="let user">{{ user.email }}</td>
-      </ng-container>
-      <ng-container matColumnDef="role">
-        <th mat-header-cell *matHeaderCellDef>Role</th>
-        <td mat-cell *matCellDef="let user">{{ user.role }}</td>
-      </ng-container>
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let user">
-          <div class="block" style="padding: 4px; margin: 2px">
-            <ng-container *ngIf="role === 'iop'">
-              <button
-                mat-icon-button
-                color="primary"
-                style="background-color: #5dad"
-                (click)="onEdit(user)"
-              >
-                <mat-icon>edit</mat-icon>
-              </button>
-              <button
-                mat-icon-button
-                style="background-color: red"
-                (click)="onDelete(user)"
-              >
-                <mat-icon>delete</mat-icon>
-              </button></ng-container
-            >
-
-            <ng-container *ngIf="role === 'emsp'">
-              <button
-                mat-icon-button
-                color="primary"
-                style="background-color: #5dad"
-                (click)="sendAccord(user)"
-              >
-                creer accord
-              </button>
-            </ng-container>
-            <ng-container *ngIf="role === 'cpo'">
-              <button
-                mat-icon-button
-                color="primary"
-                style="background-color: #5dad"
-                (click)="sendAccord(user)"
-              >
-                creer accord
-              </button>
-            </ng-container>
+        <div class="user-picture">
+          <div *ngIf="!user.file">
+            <img
+              src="assets/img/default.png"
+              style="height: 50px; width: 50px"
+              alt=""
+            />
           </div>
-        </td>
-      </ng-container>
+          <img
+            *ngIf="user.file"
+            [src]="getUserPictureUrl(user.file)"
+            alt="User Image"
+            style="
+              border-radius: 50%;
+              overflow: hidden;
+              height: 50px;
+              padding: 4px;
+              width: 50px;
+            "
+          />
+        </div>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
-  </mat-card>
+        <h5 class="card-title">User Information</h5>
+      </div>
+
+      <div class="mb-3"><strong>Username:</strong> {{ user.username }}</div>
+
+      <div class="mb-3"><strong>Email:</strong> {{ user.email }}</div>
+
+      <div class="mb-3"><strong>Role:</strong> {{ user.role }}</div>
+
+      <div class="d-flex justify-content-end">
+        <div class="block" style="padding: 4px; margin: 2px">
+          <ng-container *ngIf="role === 'iop'">
+            <button
+              class="btn btn-primary"
+              style="background-color: #5dad"
+              (click)="onEdit(user)"
+            >
+              <span class="material-icons">edit</span>
+            </button>
+            <button class="btn btn-danger" (click)="onDelete(user)">
+              <span class="material-icons">delete</span>
+            </button>
+          </ng-container>
+
+          <!-- <ng-container *ngIf="role === 'emsp' || role === 'cpo'">
+            <button
+              class="btn btn-primary"
+              style="background-color: #5dad"
+              (click)="sendAccord(user)"
+            >
+              Create Accord
+            </button>
+          </ng-container> -->
+
+          <ng-container *ngIf="role === 'emsp' || role === 'cpo'">
+            <button
+              class="btn btn-primary"
+              style="background-color: #42ab"
+              (click)="navigateToDetailOffres(user._id!)"
+            >
+              Detail
+            </button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

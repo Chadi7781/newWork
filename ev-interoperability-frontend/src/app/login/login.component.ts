@@ -47,11 +47,11 @@ export class LoginComponent {
             } else if ((res.role = 'emsp')) {
               this.toastr.success('login successfully!!');
 
-              this.router.navigate(['/dashboard']);
+              this.router.navigate(['/list-users']);
             } else if ((res.role = 'cpo')) {
               this.toastr.success('login successfully!!');
 
-              this.router.navigate(['/dashboard']);
+              this.router.navigate(['/list-users']);
             }
           }
         },

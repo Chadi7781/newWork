@@ -35,10 +35,12 @@ export class DashboardComponent {
     if (this.role === 'emsp') {
       this.userService.getUsers().subscribe((users) => {
         this.users = users.filter((u: User) => u.role === 'cpo');
+        console.log(this.users);
       });
     } else if (this.role === 'cpo') {
       this.userService.getUsers().subscribe((users) => {
         this.users = users.filter((u: User) => u.role === 'emsp');
+        console.log(this.users);
       });
     }
   }

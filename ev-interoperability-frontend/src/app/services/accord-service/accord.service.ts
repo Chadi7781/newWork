@@ -27,9 +27,7 @@ export class AccordService {
 
   confirmAccord(accordId: string): Observable<Accord> {
     const url = `${this.apiUrl}/confirm/${accordId}`;
-    return this.http.post<Accord>(url, {}).pipe(
-    
-    );
+    return this.http.post<Accord>(url, {}).pipe();
   }
   refuseAccord(accordId: string): Observable<Accord> {
     const url = `${this.apiUrl}/refuse/${accordId}`;
@@ -43,5 +41,9 @@ export class AccordService {
   getAccord(idUser: any): Observable<Accord[]> {
     const url = `${this.apiUrl}/accord/${idUser}`;
     return this.http.get<Accord[]>(url);
+  }
+  countAccords(): Observable<{ count: number }> {
+    const url = `${this.apiUrl}/count`;
+    return this.http.get<{ count: number }>(url);
   }
 }

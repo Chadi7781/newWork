@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user-service/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contracts',
@@ -12,7 +13,8 @@ export class ContractsComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private toastr: ToastrService
   ) {}
 
   onRoleChange(event: any): void {
@@ -37,15 +39,19 @@ export class ContractsComponent implements OnInit {
           this.contractForm.value.username,
           this.contractForm.value.password,
           this.contractForm.value.email,
-          this.contractForm.value.roles
+          this.contractForm.value.roles,
+          '',
+          '',
+          '',
+          '',
+          ''
         )
         .subscribe(
           (response) => {
             // Store the token in local storage
             this.userService.setToken(response.token);
             console.log('Form submitted:', this.contractForm.value);
-
-            alert(response.message);
+            this.toastr.success('Company added sucessfully');
           },
           (error) => {
             console.error('Registration failed:', error);

@@ -97,4 +97,15 @@ export class AccordService {
       throw new Error("An error occurred while retrieving accords");
     }
   }
+
+  async countAccords(): Promise<number> {
+    try {
+      const count = await this.accordModel.countDocuments({});
+      return count;
+    } catch (error) {
+      console.error(error);
+      throw new Error("Une erreur s'est produite lors du comptage des accords");
+    }
+  }
+  
 }

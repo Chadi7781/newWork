@@ -1,31 +1,95 @@
 <div *ngIf="isLoggedIn">
-  <!-- sidebar.component.html -->
+  <aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <div *ngIf="user?.role === 'iop'">
+        <li class="nav-item">
+          <a class="nav-link" (click)="navigateTo('/main')">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link collapsed"
+            data-bs-target="#components-nav"
+            data-bs-toggle="collapse"
+            href="#"
+          >
+            <i class="bi bi-three-dots"></i><span>marketplace</span
+            ><i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul
+            id="components-nav"
+            class="nav-content collapse"
+            data-bs-parent="#sidebar-nav"
+          >
+            <li>
+              <a (click)="navigateTo('/recharge-operation')">
+                <i class="bi bi-circle"></i><span>recharge operation</span>
+              </a>
+            </li>
+            <li>
+              <a (click)="navigateTo('/recharge-mobility')">
+                <i class="bi bi-circle"></i><span>recharge mobility</span>
+              </a>
+            </li>
+            <!-- Add more component items as needed -->
+          </ul>
+        </li>
 
-  <mat-sidenav-container style="height: 100vh; display: flex">
-    <mat-sidenav mode="side" opened style="width: 200px">
-      <mat-nav-list>
-        <ng-container *ngIf="user?.role === 'iop'">
-          <a mat-list-item (click)="navigateTo('/')">Dashboard</a>
-          <a mat-list-item (click)="navigateTo('/contracts')">Contract</a>
-          <a mat-list-item (click)="navigateTo('/histories')">History</a>
-        </ng-container>
-        <ng-container *ngIf="user?.role === 'emsp'">
-          <a mat-list-item (click)="navigateTo('/')">Dashboard</a>
-          <a mat-list-item (click)="navigateTo('/list-users')">List CPO</a>
-          <a mat-list-item (click)="navigateTo('/listAccords')">Accords</a>
-        </ng-container>
-        <ng-container *ngIf="user?.role === 'cpo'">
-          <a mat-list-item (click)="navigateTo('/')">Dashboard</a>
-          <a mat-list-item (click)="navigateTo('/list-users')">List EMSP</a>
-          <a mat-list-item (click)="navigateTo('/listAccords')">Accords</a>
-        </ng-container>
-        <a mat-list-item (click)="logout('/login')">Logout</a>
-        <!-- Add more sidebar items as needed -->
-      </mat-nav-list>
-    </mat-sidenav>
+        <li class="nav-item">
+          <a class="nav-link collapsed" (click)="navigateTo('/contracts')">
+            <i class="bi bi-person"></i>
+            <span>Company</span>
+          </a>
+        </li>
 
-    <mat-sidenav-content style="flex-grow: 1; overflow-y: auto">
-      <router-outlet> </router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+        <li class="nav-item">
+          <a class="nav-link collapsed" (click)="navigateTo('/histories')">
+            <i class="bi bi-grid"></i>
+            <span>Histories</span>
+          </a>
+        </li>
+      </div>
+
+      <ng-container *ngIf="user?.role === 'emsp'">
+        <a class="nav-link collapsed" (click)="navigateTo('/')">Dashboard</a>
+        <a class="nav-link collapsed" (click)="navigateTo('/list-users')"
+          >List Recharge operation</a
+        >
+        <a class="nav-link collapsed" (click)="navigateTo('/listAccords')"
+          >Accords</a
+        >
+
+        <a class="nav-link collapsed" (click)="navigateTo('/add-offre')"
+          >add Offre</a
+        >
+        <li class="nav-item">
+          <a class="nav-link collapsed" (click)="navigateTo('/profile')">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="user?.role === 'cpo'">
+        <a class="nav-link collapsed" (click)="navigateTo('/')">Dashboard</a>
+        <a class="nav-link collapsed" (click)="navigateTo('/list-users')"
+          >List Recharge mobility</a
+        >
+        <a class="nav-link collapsed" (click)="navigateTo('/listAccords')"
+          >Accords</a
+        >
+        <a class="nav-link collapsed" (click)="navigateTo('/add-offre')"
+          >add Offre</a
+        >
+        <li class="nav-item">
+          <a class="nav-link collapsed" (click)="navigateTo('/profile')">
+            <i class="bi bi-person"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+      </ng-container>
+      <a class="nav-link collapsed" (click)="logout('/login')">Logout</a>
+    </ul>
+  </aside>
 </div>

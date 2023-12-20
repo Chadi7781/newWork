@@ -5,7 +5,11 @@
     margin: 10px;
     padding: 8px;
 
-  }
+  }.user-picture {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
 .custom-table {
 width: 100%;
 border-collapse: collapse;

@@ -28,6 +28,9 @@ export class MainComponent implements OnInit {
 
     this.loadUsers();
     this.loadAccords();
+    this.countCpoUsers();
+    this.countEmspUsers();
+    this.countAccords();
   }
 
   loadUsers(): void {
@@ -50,5 +53,26 @@ export class MainComponent implements OnInit {
   deleteUser(user: User): void {
     // Implement delete functionality
     console.log('Delete user:', user);
+  }
+  cpoUsersCount?: { cpoCount: number };
+  emspUsersCount?: { emspCount: number };
+
+  countEmspUsers() {
+    this.userService.countEmspUsers().subscribe((data) => {
+      this.emspUsersCount = JSON.parse(JSON.stringify(data.emspUsers)) ?? null;
+    });
+  }
+
+  countCpoUsers() {
+    this.userService.countCpoUsers().subscribe((data) => {
+      this.cpoUsersCount = JSON.parse(JSON.stringify(data.cpoUsers)) ?? null;
+    });
+  }
+  nombreAccords?: number;
+
+  countAccords() {
+    this.accordServ.countAccords().subscribe((result) => {
+      this.nombreAccords = result.count;
+    });
   }
 }

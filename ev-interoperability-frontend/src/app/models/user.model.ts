@@ -8,5 +8,9 @@ export interface User {
   role: string;
   activationToken?: string; // Optional, used for account activation
   isValid?: boolean; // Optional, to indicate whether the user account is activated
-
+  phone: string;
+  country: string;
+  address: string;
+  about: string;
+  file: string;
 }

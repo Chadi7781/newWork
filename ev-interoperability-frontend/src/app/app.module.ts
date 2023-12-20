@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -32,6 +32,15 @@ import { MainModule } from './main/main.module';
 import { DashboardUsersModule } from './users/dashboard/dashboard-users/dashboard-users.module';
 import { ToastrModule } from 'ngx-toastr';
 import { HistoryModule } from './dashboard-iop/history/history.module';
+import { ProfileComponent } from './profile/profile.component';
+import { ImageDisplayComponent } from './uploadPicture/display-picture';
+import { ResetPasswordComponent } from './users/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './users/forget-password/forget-password.component';
+import { DetailUserComponent } from './detail-user/detail-user.component';
+import { AddOffreComponent } from './offres/add-offre/add-offre.component';
+import { GetOffresComponent } from './offres/get-offres/get-offres.component';
+import { DashboardIopModule } from './dashboard-iop/dashboard-iop.module';
+import { DataTablesModule } from 'angular-datatables';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +51,13 @@ import { HistoryModule } from './dashboard-iop/history/history.module';
     SidebarComponent,
     ContractsComponent,
     ActivateAccountComponent,
+    ImageDisplayComponent,
+    ProfileComponent,
+    ResetPasswordComponent,
+    ForgetPasswordComponent,
+    DetailUserComponent,
+    AddOffreComponent,
+    GetOffresComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,20 +65,14 @@ import { HistoryModule } from './dashboard-iop/history/history.module';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MatToolbarModule,
-    HistoryModule,
-    MatSidenavModule,
-    MatListModule,
-    MatOptionModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatCardModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatTableModule,
     MainModule,
     DashboardModule,
     DashboardUsersModule,
+    DashboardIopModule,
+    HistoryModule,
+
     MatIconModule,
+    FormsModule,
     AppRoutingModule,
   ],
   providers: [],

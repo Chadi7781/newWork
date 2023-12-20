@@ -40,4 +40,16 @@ export class AccordController {
     const accords = await this.accordService.getAccord(idUser);
     return { accords };
   }
+
+  @Get("count")
+  async countAccords(): Promise<{ count: number }> {
+    try {
+      const count = await this.accordService.countAccords();
+      return { count };
+    } catch (error) {
+      console.error(error);
+      // Gérer l'erreur appropriée, par exemple, renvoyer une réponse HTTP avec un code d'erreur.
+      throw new Error("Une erreur s'est produite lors du comptage des accords");
+    }
+  }
 }

@@ -23,13 +23,14 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.sessionServ.getConnectivityStatus().subscribe((status) => {
       this.isLoggedIn = status;
- this.user = JSON.parse(this.sessionServ.getCurrentUser());
- if (this.user?.role === 'emsp') {
-   console.log('I am emsp');
- } else if (this.user?.role === 'iop') {
- }    });
+      this.user = JSON.parse(this.sessionServ.getCurrentUser());
+      if (this.user?.role === 'emsp') {
+        console.log('I am emsp');
+      } else if (this.user?.role === 'iop') {
+        
 
-   
+      }
+    });
   }
 
   navigateTo(route: string): void {
@@ -38,7 +39,8 @@ export class SidebarComponent implements OnInit {
 
   logout(route: string) {
     localStorage.removeItem('user');
+    this.isLoggedIn = false;
 
-    this.router.navigate([route]);
+    this.router.navigate(['/login']);
   }
 }

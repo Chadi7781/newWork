@@ -1,0 +1,39 @@
+<main class="main" id="main">
+  <section class="section">
+    <!-- recharge-operation.component.html -->
+
+    <!-- recharge-operation.component.html -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <table #dataTable class="table table-striped">
+            <thead>
+              <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Phone</th>
+                <th>country</th>
+                <!-- Add more columns as needed -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of RechargeOperation">
+                <td>{{ user._id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.phone ? user.phone : "not mention" }}</td>
+                <td>{{ user.country ? user.country : "not mention" }}</td>
+
+                <!-- Add more columns as needed -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

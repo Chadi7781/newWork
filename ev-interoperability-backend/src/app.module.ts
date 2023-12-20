@@ -5,11 +5,23 @@ import { AppService } from "./app.service";
 import { UserModule } from "./users/users.module";
 import { AccordModule } from "./users/schemas/accord.module";
 import { HistoryModule } from "./users/schemas/history.module";
+import { MulterModule } from "@nestjs/platform-express/multer";
+import { MulterConfigModule } from "./utils/multer.config";
+import { join } from "path";
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { OffreModule } from "./users/schemas/offre.module";
+
 @Module({
   imports: [
     UserModule,
     AccordModule,
     HistoryModule,
+    OffreModule,
+    MulterConfigModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, "..", "uploads"),
+      serveRoot: "/uploads",
+    }),
 
     MongooseModule.forRootAsync({
       useFactory: async () => ({

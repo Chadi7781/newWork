@@ -1,11 +1,29 @@
-<!-- history.component.html -->
-<div *ngFor="let entry of historyEntries" class="card">
-  <div class="card-header">{{ entry.operation }}</div>
-  <div class="card-body">
-    <p class="card-text">{{ entry.details }}</p>
-    <div class="user-info">
-      <span class="user-id">User ID: {{ entry.userId }}</span>
-      <span class="timestamp">Timestamp: {{ entry.timestamp | date : "medium" }}</span>
+<main class="main" id="main">
+  <section class="section">
+    <div class="card-container">
+      <div *ngFor="let entry of historyEntries" class="card">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <!-- Placeholder for Logo Image (if needed) -->
+            <h5 class="card-title">{{ entry.operation }}</h5>
+          </div>
+
+          <div class="mb-3"><strong>Details:</strong> {{ entry.details }}</div>
+
+          <div class="user-info">
+            <span class="user-id">User ID: {{ entry.userId }}</span>
+            <span class="timestamp"
+              >Timestamp: {{ entry.timestamp | date : "medium" }}</span
+            >
+          </div>
+
+          <!-- Add buttons or actions specific to History Entries if needed -->
+          <!-- Example: Edit and Delete buttons -->
+          <div class="d-flex justify-content-end">
+            <div class="block" style="padding: 4px; margin: 2px"></div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </section>
+</main>

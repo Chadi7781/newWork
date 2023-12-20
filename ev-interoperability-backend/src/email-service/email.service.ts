@@ -32,4 +32,23 @@ export class EmailService {
 
     await this.transporter.sendMail(mailOptions);
   }
+
+  async sendResetPasswordEmail(email: string, token: string): Promise<void> {
+    const resetLink = `http://localhost:4200/reset-password/${token}`;
+    const mailOptions = {
+      from: "chadi.troudi@esprit.tn",
+      to: email,
+      subject: "Reset your password",
+      html: `
+        <h1>Dear User,</h1>
+        <h2>You have requested to reset your password.</h2> <br/>
+        <p>Please click the following link to reset your password:</p> 
+        <a href="${resetLink}">${resetLink}</a>
+        <p>If you did not initiate this request, you can safely ignore this email.</p>
+        <p>Best Regards,<br>Electric-cars-platform Team</p>
+      `,
+    };
+
+    await this.transporter.sendMail(mailOptions);
+  }
 }
