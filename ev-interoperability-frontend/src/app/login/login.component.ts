@@ -46,6 +46,7 @@ export class LoginComponent {
               this.router.navigate(['/main']);
             } else if ((res.role = 'emsp')) {
               this.toastr.success('login successfully!!');
+              window.location.reload();
 
               this.router.navigate(['/list-users']);
             } else if ((res.role = 'cpo')) {

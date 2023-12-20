@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user-service/user.service';
 
@@ -10,8 +10,8 @@ import { UserService } from 'src/app/services/user-service/user.service';
     <main class="main" id="main">
       <section class="section">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-12">
+          <div class="row">
+            <div style="width: 700px;">
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title text-center">Reset Password</h5>
@@ -19,8 +19,8 @@ import { UserService } from 'src/app/services/user-service/user.service';
                   <!-- Reset Password Form -->
                   <form (ngSubmit)="resetPassword()" [formGroup]="passwordForm">
                     <div class="row mb-3">
-                      <label for="yourUsername" class="col-sm-2 col-form-label"
-                        >new password</label
+                      <label for="yourUsername" class="col-sm-2 col-form-label">
+                        password</label
                       >
                       <div class="col-sm-10">
                         <div class="input-group has-validation">
@@ -65,7 +65,8 @@ export class ResetPasswordComponent implements OnInit {
     private authService: UserService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.passwordForm = this.formBuilder.group({
       password: ['', Validators.required],
@@ -88,6 +89,7 @@ export class ResetPasswordComponent implements OnInit {
         // Handle success, e.g., show a success message or redirect
         console.log('Password reset successfully', response);
         this.toastr.success('Password reset successfully');
+        this.router.navigate(['/g']);
       },
       (error) => {
         // Handle error, e.g., display an error message to the user

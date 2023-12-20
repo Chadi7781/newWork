@@ -52,6 +52,7 @@ export class ContractsComponent implements OnInit {
             this.userService.setToken(response.token);
             console.log('Form submitted:', this.contractForm.value);
             this.toastr.success('Company added sucessfully');
+            window.location.reload();
           },
           (error) => {
             console.error('Registration failed:', error);
